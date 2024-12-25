@@ -1,5 +1,8 @@
 # Christmas
 
+![image](https://github.com/user-attachments/assets/5788cf8a-1263-4d40-95b6-26becbecf960)
+
+
 **(1) 修正後的用文的句子**  
 "How do you welcome Santa to your house? Decorate your home with festive ornaments, prepare cookies and milk, leave a warm note, and create a cozy atmosphere."
 
