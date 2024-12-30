@@ -63,6 +63,17 @@ class Snowflake:
             return id
 
 # Example usage:
+# The Snowflake ID generation algorithm is used to generate unique identifiers
+# in a distributed system. It ensures that IDs are unique across multiple machines
+# and over time. The generated ID is a 64-bit integer composed of a timestamp,
+# machine ID, and sequence number.
 snowflake = Snowflake(machine_id=1)
 unique_id = snowflake.generate_id()
 print(unique_id)
+
+# Use cases for the Snowflake ID generation algorithm:
+# 1. Distributed databases: Ensuring unique primary keys across multiple database nodes.
+# 2. Message queues: Generating unique message IDs in a distributed messaging system.
+# 3. Microservices: Creating unique request or transaction IDs across different services.
+# 4. Logging: Generating unique log entry IDs for tracing and debugging purposes.
+# 5. Caching: Creating unique cache keys for distributed caching systems.

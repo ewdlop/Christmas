@@ -79,5 +79,27 @@ drawLSystem();
 </head>
 <body>
     <canvas id="canvas" width="800" height="800"></canvas>
+    <section>
+        <h2>Customize the L-System Pattern</h2>
+        <p>To customize the L-System pattern, you can modify the axiom, rules, and angle in the JavaScript code. For example, changing the rule <code>"F": "FF+[+F-F-F]-[-F+F+F]"</code> to a different string will create a different pattern. Adjust the <code>angle</code> variable to change the branching angle of the pattern.</p>
+        <p>Here is an example of how you can customize the L-System pattern:</p>
+        <pre>
+<code>
+const axiom = "F";
+const rules = {
+    "F": "F[+F]F[-F]F"
+};
+const angle = 30; // Change the angle to 30 degrees
+
+// Run the generation process
+for (let i = 0; i < generations; i++) {
+    generate();
+}
+
+// Initial draw
+drawLSystem();
+</code>
+        </pre>
+    </section>
 </body>
 </html>
