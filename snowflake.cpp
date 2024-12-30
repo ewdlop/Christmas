@@ -1,5 +1,3 @@
-//This setup will render a procedural "snakeflake" pattern in an OpenGL window. Adjust the `snakePattern` function and other parameters for different visual effects.
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -66,6 +64,9 @@ in vec2 TexCoord;
 uniform float time;
 uniform vec2 resolution;
 
+// The snakePattern function generates a procedural 'snakeflake' pattern.
+// It uses sine functions to create a snake-like pattern on a 2D plane.
+// The pattern can be modified by adjusting the scale, time, and sine functions.
 float snakePattern(vec2 uv) {
     float scale = 10.0;
     uv *= scale;
