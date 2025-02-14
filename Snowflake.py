@@ -45,7 +45,15 @@ class Snowflake:
             timestamp = self._current_timestamp()
 
             if timestamp < self.last_timestamp:
-                raise Exception("Clock moved backwards. Refusing to generate id")
+                # Handle clock drift by waiting for the clock to catch up
+                offset = self.last_timestamp - timestamp
+                if offset < 5:
+                    time.sleep(offset / 1000.0)
+                    timestamp = self._current_timestamp()
+                    if timestamp < self.last_timestamp:
+                        raise Exception("Clock moved backwards. Refusing to generate id")
+                else:
+                    raise Exception("Clock moved backwards. Refusing to generate id")
 
             if timestamp == self.last_timestamp:
                 self.sequence = (self.sequence + 1) & self.max_sequence

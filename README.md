@@ -1,6 +1,6 @@
 # Christmas
 
-![image](https://github.com/user-attachments/assets/5788cf8a-1263-4d40-95b6-26becbecf960)
+![image](https://github.com/user-attachments/assets/5788cf8a-1263-4d40-95b6-26becbecf960.png)
 
 
 **(1) 修正後的用文的句子**  

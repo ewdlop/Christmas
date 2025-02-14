@@ -1,5 +1,5 @@
 CREATE TABLE employees (
-    id INT AUTOINCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name STRING,
     department STRING,
     hire_date DATE
