@@ -17,11 +17,41 @@ async function init() {
     });
 
     const vertexModule = device.createShaderModule({
-        code: `...vertex shader code...`
+        code: `
+        @vertex
+        fn main(@builtin(vertex_index) vertexIndex : u32) -> VertexOutput {
+            var positions = array<vec3<f32>, 6>(
+                vec3<f32>(0.0, 0.5, 0.0),
+                vec3<f32>(-0.5, -0.5, 0.0),
+                vec3<f32>(0.5, -0.5, 0.0),
+                vec3<f32>(-0.5, 0.5, 0.0),
+                vec3<f32>(0.5, 0.5, 0.0),
+                vec3<f32>(0.0, -0.5, 0.0)
+            );
+            var colors = array<vec4<f32>, 6>(
+                vec4<f32>(1.0, 0.0, 0.0, 1.0),
+                vec4<f32>(0.0, 1.0, 0.0, 1.0),
+                vec4<f32>(0.0, 0.0, 1.0, 1.0),
+                vec4<f32>(1.0, 1.0, 0.0, 1.0),
+                vec4<f32>(1.0, 0.0, 1.0, 1.0),
+                vec4<f32>(0.0, 1.0, 1.0, 1.0)
+            );
+
+            var output : VertexOutput;
+            output.position = vec4<f32>(positions[vertexIndex], 1.0);
+            output.color = colors[vertexIndex];
+            return output;
+        }
+        `
     });
 
     const fragmentModule = device.createShaderModule({
-        code: `...fragment shader code...`
+        code: `
+        @fragment
+        fn main(@location(0) color : vec4<f32>) -> @location(0) vec4<f32> {
+            return color;
+        }
+        `
     });
 
     const pipeline = device.createRenderPipeline({
