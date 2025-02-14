@@ -9,16 +9,30 @@
             border: 1px solid black;
         }
     </style>
-    <div>
-      <script>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <section>
+        <h2>Customize the L-System Pattern</h2>
+        <p>To customize the L-System pattern, you can modify the axiom, rules, and angle in the JavaScript code. For example, changing the rule <code>"F": "FF+[+F-F-F]-[-F+F+F]"</code> to a different string will create a different pattern. Adjust the <code>angle</code> variable to change the branching angle of the pattern.</p>
+        <pre>
+<code>
+const axiom = "F";
+const rules = {
+    "F": "F[+F]F[-F]F"
+};
+const angle = 30; // Change the angle to 30 degrees
+</code>
+        </pre>
+    </section>
+<div>
+    <script>
 // L-System definition
 const axiom = "F";
 const rules = {
     "F": "FF+[+F-F-F]-[-F+F+F]"
 };
 const angle = 25; // Angle in degrees
-
-// L-System generation
 let sentence = axiom;
 const generations = 5;
 
@@ -30,16 +44,10 @@ function generate() {
     sentence = nextSentence;
 }
 
-// Run the generation process
-for (let i = 0; i < generations; i++) {
-    generate();
-}
-
-// Drawing the Lindenmayer System(L-System)
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-
 function drawLSystem() {
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height);
@@ -72,34 +80,17 @@ function drawLSystem() {
     ctx.restore();
 }
 
-// Initial draw
-drawLSystem();
-      </script>
-    </div>
-</head>
-<body>
-    <canvas id="canvas" width="800" height="800"></canvas>
-    <section>
-        <h2>Customize the L-System Pattern</h2>
-        <p>To customize the L-System pattern, you can modify the axiom, rules, and angle in the JavaScript code. For example, changing the rule <code>"F": "FF+[+F-F-F]-[-F+F+F]"</code> to a different string will create a different pattern. Adjust the <code>angle</code> variable to change the branching angle of the pattern.</p>
-        <p>Here is an example of how you can customize the L-System pattern:</p>
-        <pre>
-<code>
-const axiom = "F";
-const rules = {
-    "F": "F[+F]F[-F]F"
-};
-const angle = 30; // Change the angle to 30 degrees
-
-// Run the generation process
-for (let i = 0; i < generations; i++) {
-    generate();
+// Initialize and run
+function init() {
+    for (let i = 0; i < generations; i++) {
+        generate();
+    }
+    drawLSystem();
 }
 
-// Initial draw
-drawLSystem();
-</code>
-        </pre>
-    </section>
+// Run after page loads
+window.addEventListener('load', init);
+    </script>
+    </div>
 </body>
 </html>
